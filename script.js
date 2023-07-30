@@ -1,5 +1,4 @@
-// İlk olarak, JSON dosyasından verileri çekmek için bir HTTP isteği yapalım.
-// Burada "fetch" fonksiyonunu kullanacağız ve verileri global bir değişkene atayacağız.
+
 let productList;
 
 // "fetch" kullanarak JSON dosyasını çekiyoruz.
@@ -12,19 +11,17 @@ fetch("https://fakestoreapi.com/products")
   })
   .catch((error) => console.log("Bir hata oluştu: ", error));
 
-// Alışveriş sayfasını oluşturan işlev.
+
 function createShoppingPage() {
-  // HTML içindeki gerekli elementleri seçiyoruz.
+ 
   const productListContainer = document.getElementById("productListContainer");
   const searchInput = document.getElementById("searchInput");
   const categoryTags = document.querySelectorAll(".categoryTag");
   const cartIcon = document.getElementById("cartIcon");
   const cartDialog = document.getElementById("cartDialog");
   
-  // Alışveriş sepetini tutacak bir dizi oluşturuyoruz.
   let shoppingCart = [];
   displayProducts(productList);
-  // Arama girdisine metin girildiğinde filtreleme işlemini gerçekleştiren işlev.
   searchInput.addEventListener("input", () => {
     const searchText = searchInput.value.toLowerCase();
     const filteredProducts = productList.filter((product) =>
@@ -32,13 +29,11 @@ function createShoppingPage() {
     );
     displayProducts(filteredProducts);
   });
-
-  // Kategori etiketleri tıklanıldığında filtreleme işlemini gerçekleştiren işlev.
    categoryTags.forEach((tag) => {
     tag.addEventListener("click", () => {
       const category = tag.dataset.category;
       if (category === "all") {
-        displayProducts(productList); // "Hepsı" kategorisine tıklanırsa tüm ürünleri göster
+        displayProducts(productList);
       } else {
         const filteredProducts = productList.filter(
           (product) => product.category === category
@@ -47,8 +42,6 @@ function createShoppingPage() {
       }
     });
   });
-
-  // Ürünleri sayfada gösteren işlev.
   function displayProducts(products) {
     productListContainer.innerHTML = "";
     products.forEach((product) => {
@@ -57,7 +50,6 @@ function createShoppingPage() {
     });
   }
 
-  // Ürün kartını oluşturan işlev.
   function createProductCard(product) {
     const productCard = document.createElement("div");
     productCard.classList.add("productCard");
@@ -83,7 +75,6 @@ function createShoppingPage() {
     return productCard;
   }
 
-  // Ürünü sepete ekleyen işlev.
   function addToCart(product) {
     shoppingCart.push(product);
     updateCartIcon();
@@ -97,26 +88,23 @@ function createShoppingPage() {
     alertDiv.style.transform = "translate(-50%, -50%)";
     document.body.appendChild(alertDiv);
   
-    // Uyarı mesajını 2 saniye sonra kaldırıyoruz.
     setTimeout(() => {
       document.body.removeChild(alertDiv);
     }, 2000);
   }
 
-  // Sepeti güncelleyen işlev.
   function updateCartIcon() {
     const cartItemCount = shoppingCart.length;
     const cartCountElement = document.getElementById("cartCount");
     cartCountElement.textContent = cartItemCount;
   }
-  
-  // Sepet ikonuna tıklandığında sepeti açan işlev.
+
   cartIcon.addEventListener("click", () => {
     displayCartDialog();
     
   });
 
-  // Sepet içeriğini görüntüleyen işlev.
+
   function displayCartDialog() {
     cartDialog.innerHTML = "";
     if (shoppingCart.length === 0) {
@@ -144,13 +132,11 @@ function createShoppingPage() {
     cartDialog.style.display = "block";
   }
 
-  // Sepet içindeki ürünü temsil eden kartı oluşturan işlev.
-  // Sepet içindeki ürünü temsil eden kartı oluşturan işlev.
 function createCartItem(product) {
   const productCartItem = document.createElement("div");
   productCartItem.classList.add("productCartItem");
 
-  // Ürün resmini ekleyin
+
   const productImage = document.createElement("img");
   productImage.src = product.image;
   productImage.alt = product.title;
@@ -173,7 +159,6 @@ function createCartItem(product) {
 }
 
 
-  // Sepetten ürünü kaldıran işlev.
   function removeItemFromCart(product) {
     const index = shoppingCart.findIndex((item) => item.id === product.id);
     if (index !== -1) {
