@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alışveriş Sayfası</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Alışveriş Sayfası</h1>
+        <div id="cartIcon" class="cart-icon">
+            <img src="sepet-ikonu.png" alt="Cart Icon">
+            <div id="cartCount">0</div>
+        </div>
+    </header>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Kategoriler</h2>
+            <div class="categoryTag" data-category="all">Hepsi</div>
+            <div class="categoryTag" data-category="men's clothing">Erkek Giyim</div>
+            <div class="categoryTag" data-category="jewelery">Mücevher</div>
+            <div class="categoryTag" data-category="electronics">Elektronik</div>
+            <div class="categoryTag" data-category="women's clothing">Kadın Giyim</div>
+   
+        </div>
+        <div class="content">
+            <input type="text" id="searchInput" placeholder="Ürün Ara...">
+            <div id="productListContainer">
+                <!-- Ürünler burada listelenecek -->
+            </div>
+        </div>
+    </div>
+    
+<div id="cartDialog" class="cartDialog">
+    <span id="closeButton" class="closeButton">&times;</span>
+    <h2>Sepetiniz</h2>
+    <div id="cartContent"></div>
+  </div>
+  
+    <script src="script.js"></script>
+</body>
+</html>
