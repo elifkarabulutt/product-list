@@ -17,6 +17,12 @@ header h1 {
   margin: 0;
 }
 
+
+
+header h1 {
+  flex: 1;
+  text-align: center;
+}
 .cart-icon {
   position: relative;
   display: flex;
@@ -52,14 +58,16 @@ header h1 {
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   z-index: 999;
+  text-align: center; 
 }
+
 .closeButton {
   position: absolute;
   top: 10px;
   right: 10px;
   font-size: 20px;
   cursor: pointer;
-  z-index: 1; /* Yeni satır: Diğer içeriklerin üzerine getirin */
+  z-index: 1; 
 }
 
 .container {
@@ -133,4 +141,37 @@ header h1 {
   margin-top: 20px;
   font-weight: bold;
   text-align: center;
+}
+.categoryTag {
+  cursor: pointer;
+  padding: 10px;
+  margin-bottom: 5px;
+  color: #fff;
+  background-color: #333;
+  text-align: center;
+}
+
+.categoryTag.all {
+  background-color: #007bff;
+}
+
+.categoryTag.men {
+  background-color: #dc3545;
+}
+
+.categoryTag.jewelery {
+  background-color: #ffc107;
+}
+
+.categoryTag.electronics {
+  background-color: #28a745;
+}
+
+.categoryTag.women {
+  background-color: #ff69b4;
+}
+
+
+.categoryTag:hover {
+  background-color: #555;
 }
